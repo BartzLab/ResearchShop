@@ -10,6 +10,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-cream: #f5efe6;
+  --color-maroon-dark: #660f1a;
+  --color-maroon: #660f1a;
 }
 
 @media (prefers-color-scheme: dark) {
