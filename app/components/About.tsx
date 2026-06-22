@@ -5,17 +5,16 @@ import ProcessTimeline from "./Processtimeline";
 export default function About() {
   return (
     <section id="about" className="relative w-full bg-white">
-      <div className="w-full relative">
-  {/* Full-width photo */}
-  <div className="relative w-full aspect-16/7">
-    <Image
-      src="/images/people.png"
-      alt="Students and researchers collaborating"
-      fill
-      sizes="100vw"
-      className="object-cover object-center"
-    />
-  </div>
+      <div className="w-full relative overflow-hidden">
+      <div className="relative w-full aspect-[16/7] min-h-[600px]">
+        <Image
+        src="/images/people.png"
+        alt="Students and researchers collaborating"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+        />
+    </div>
 
   {/* Cream card — sized to content, centered vertically */}
   <div className="absolute ml-24 inset-y-0 left-0 w-[50%] flex items-center">
