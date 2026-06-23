@@ -8,7 +8,7 @@ export default function About() {
       <div className="w-full relative overflow-hidden" style={{ height: "700px" }}>
         {/* Full-width photo behind everything */}
         <Image
-          src="/images/people.png"
+          src="/images/people.jpeg"
           alt="Students and researchers collaborating"
           fill
           sizes="100vw"

@@ -10,7 +10,6 @@ const dmSans = DM_Sans({
 const navLinks = [
   { label: "ABOUT", href: "#about" },
   { label: "PROJECTS", href: "#projects" },
-  { label: "RESOURCES", href: "#resources" },
   { label: "CONTACT", href: "#contact" },
 ];
 
@@ -27,9 +26,14 @@ export default function Hero() {
 
       <nav className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-5 z-10">
         {/* Logo */}
-        <a href="#top" className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-white/80 bg-[#7a1f1f]/70">
-          {/* Replace with actual logo SVG or <Image> */}
-          <span className="text-white text-xs font-semibold tracking-wide">MAP</span>
+        <a href="https://www.bartzlab.com" target="_blank" rel="noopener noreferrer">
+        <Image
+            src="/images/bartz-lab-logo.png"
+            alt="Bartz Lab"
+            width={48}
+            height={48}
+            className="object-contain"
+        />
         </a>
 
         <ul className="flex items-center gap-8">

@@ -121,12 +121,15 @@ export default function Projects() {
         <p className="text-cream/80 max-w-xl" style={{ fontSize: "1rem" }}>
         Want to know more about how we conducted this research? Wondering about our findings?
         </p>
-          <button
-            className="flex-shrink-0 px-12 py-6 rounded-full text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-            style={{ backgroundColor: "#e0dada", fontSize: "1rem" }}
-          >
-            View our full project archive
-          </button>
+        <a
+        href="https://www.bartzlab.com/copy-of-home"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex-shrink-0 px-12 py-6 rounded-full text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+  style={{ backgroundColor: "#e0dada", fontSize: "1rem" }}
+>
+  View our full project archive
+</a>
         </div>
       </div>
     </section>
