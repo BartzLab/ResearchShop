@@ -47,7 +47,7 @@ export default function About() {
           {/* Body copy — ~1.17rem matches Canva's ~14px body */}
           <p
             className="text-maroon-dark leading-relaxed"
-            style={{ fontSize: "1.17rem" }}
+            style={{ fontSize: "1.17rem", fontFamily: "var(--font-dm-sans)" }}
           >
             We aim to{" "}
             <strong>
@@ -63,7 +63,7 @@ export default function About() {
               community members learn about the scientific process
             </strong>{" "}
             and how it can be used to address the questions most relevant to
-            them, and <strong>researchers conduct meaningful work</strong> that
+            them, and <strong>researchers conduct meaningful work </strong> that
             bolsters the &ldquo;why&rdquo; that drives their practice.
           </p>
         </div>

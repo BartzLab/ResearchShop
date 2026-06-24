@@ -59,7 +59,7 @@ function SectionDivider({ label }: { label: string }) {
       >
         {label}
       </span>
-      <span className="flex-1 h-[2px] bg-cream/30" />
+      <span className="flex-1 h-0.5 bg-cream/30" />
     </div>
   );
 }
@@ -77,21 +77,6 @@ function SocialIcon({ href, label, children }: { href: string; label: string; ch
       </a>
     );
   }
-
-function PolaroidFrame({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative w-[400px] h-[400px] flex-shrink-0">
-      <div className="absolute inset-0 bg-[#e8dcc8] rounded-sm" />
-      <div
-        className="absolute border border-[#b8956a] rounded-sm"
-        style={{ inset: "6px 6px -6px -6px" }}
-      />
-      <div className="relative w-full h-full overflow-hidden rounded-sm">
-        {children}
-      </div>
-    </div>
-  );
-}
 
 function TeamCard({
   name,
@@ -120,10 +105,10 @@ function TeamCard({
         />
       </div>
       <div className="flex flex-col text-center justify-center items-center">
-        <p className="text-cream mb-1" style={{ fontFamily: "'Georgia', 'Times New Roman', serif", fontSize: "2.083rem" }}>
+        <p className="text-cream mb-1" style={{ fontSize: "2.083rem" }}>
           {name}
         </p>
-        <p className="text-cream/70 leading-snug mb-3 max-w-[220px]" style={{ fontSize: "1.666rem" }}>{role}</p>
+        <p className="text-cream/70 leading-snug mb-3 max-w-55" style={{ fontFamily: "var(--font-dm-sans)", fontSize: "1.666rem" }}>{role}</p>
         <div className="flex items-center justify-center gap-2">
             <SocialIcon href={email} label={`Email ${name}`}>
                 <FaEnvelope size={20} />
@@ -145,14 +130,14 @@ function TeamCard({
 function ComingSoonCard({ name, role }: { name: string; role: string }) {
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="relative w-[260px] h-[290px] flex-shrink-0">
+      <div className="relative w-65 h-72.5 shrink-0">
         <Image src="/images/team/coming-soon.png" alt="Coming Soon" fill className="object-cover" />
       </div>
       <div className="text-center">
       <p className="text-cream mb-1" style={{ fontFamily: "'Georgia', 'Times New Roman', serif", fontSize: "2.083rem" }}>
           {name}
         </p>
-        <p className="text-cream/70 leading-snug mb-3 max-w-[220px]" style={{ fontSize: "1.666rem" }}>{role}</p>
+        <p className="text-cream/70 leading-snug mb-3 max-w-55" style={{ fontFamily: "var(--font-dm-sans)", fontSize: "1.666rem" }}>{role}</p>
       </div>
     </div>
   );

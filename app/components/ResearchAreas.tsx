@@ -47,7 +47,7 @@ export default function ResearchAreas() {
       </h2>
 
       {/* Subhead — never moves */}
-      <p className="text-cream text-xl leading-relaxed max-w-3xl mx-auto mb-20">
+      <p className="text-cream text-xl leading-relaxed max-w-3xl mx-auto mb-20" style={{ fontFamily: "var(--font-dm-sans)" }}>
         We specialize in three main areas in social psychology research:{" "}
         <strong className="font-bold">attachment</strong>,{" "}
         <strong className="font-bold">prosocial behaviour</strong>, and{" "}
@@ -55,7 +55,7 @@ export default function ResearchAreas() {
       </p>
 
       {/* Icon row */}
-      <div className="flex flex-col md:flex-row items-start justify-center gap-16 md:gap-24">
+      <div className="flex flex-col md:flex-row items-start justify-center gap-16 md:gap-24" style={{ fontFamily: "var(--font-dm-sans)" }}>
         {researchAreas.map((area, index) => {
           const isActive = activeIndex === index;
           // Nothing is dimmed until a selection has been made. Once
@@ -95,7 +95,7 @@ export default function ResearchAreas() {
       {/* This single slot holds either the hint text (default) or the
           active area's panel (after a click) — same position either
           way, so the panel never appears far below where you'd expect. */}
-      <div className="mt-6 min-h-8">
+      <div className="mt-6 min-h-8" style={{ fontFamily: "var(--font-dm-sans)" }}>
         {activeIndex === null ? (
           <p className="text-cream text-xl italic opacity-60">
             Click an icon to learn more

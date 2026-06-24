@@ -192,7 +192,7 @@ const processSteps = [
                       backgroundColor: step.color,
                     }}
                   >
-                    <span className="text-white font-bold text-4xl">
+                    <span className="text-white font-bold text-7xl mb-6">
                       {step.number}
                     </span>
                   </div>
@@ -204,21 +204,21 @@ const processSteps = [
                 so every pill occupies the same vertical space regardless of
                 how much text it holds — fixing the uneven spacing where
                 longer-content pills crept into neighboring steps' space. */}
-            <div className="relative" style={{ width: 480, height: svgHeight }}>
+            <div className="relative px-8 py-4" style={{ width: 440, height: svgHeight }}>
               {processSteps.map((step, i) => {
                 const centerY = 8 + ARC_RADIUS * 2 * i + ARC_RADIUS;
                 return (
                   <div
                     key={step.number}
-                    className="absolute left-0 right-0 bg-white rounded-3xl px-10 py-8 flex flex-col justify-center"
+                    className="absolute left-0 right-0 bg-white rounded-2xl px-10 flex flex-col justify-center"
                     style={{
                       top: centerY,
                       transform: "translateY(-50%)",
                       minHeight: PILL_MIN_HEIGHT,
                     }}
                   >
-                    <p className="font-bold text-xl mb-2 text-maroon-dark">{step.title}</p>
-                    <p className="text-maroon-dark text-base leading-relaxed">
+                    <p className="font-bold text-2xl mb-2 text-[#ab1f42]">{step.title}</p>
+                    <p className="text-gray-700 text-base leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
                       {step.description}
                     </p>
                   </div>

@@ -52,7 +52,7 @@ export default function Contact() {
           <div className="flex flex-col gap-5">
             {/* Name */}
             <div>
-              <label className="block text-maroon-dark mb-1" style={{ fontSize: "1rem" }}>
+              <label className="block text-maroon-dark mb-1" style={{ fontFamily: "var(--font-dm-sans)", fontSize: "1rem" }}>
                 Name
               </label>
               <input
@@ -60,14 +60,14 @@ export default function Contact() {
                 placeholder="Your name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-md px-4 py-3 text-maroon-dark/50 outline-none"
-                style={{ fontSize: "1rem", backgroundColor: "#dde0e3" }}
+                className="w-full rounded-md px-4 py-3 text-maroon-dark outline-none"
+                style={{ fontFamily: "var(--font-dm-sans)", fontSize: "1rem", backgroundColor: "#dde0e3" }}
               />
             </div>
 
             {/* Email */}
             <div>
-              <label className="block text-maroon-dark mb-1" style={{ fontSize: "1rem" }}>
+              <label className="block text-maroon-dark mb-1" style={{ fontFamily: "var(--font-dm-sans)", fontSize: "1rem" }}>
                 Email
               </label>
               <input
@@ -75,14 +75,14 @@ export default function Contact() {
                 placeholder="your.email@example.ca"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-md px-4 py-3 text-maroon-dark/50 outline-none"
-                style={{ fontSize: "1rem", backgroundColor: "#dde0e3" }}
+                className="w-full rounded-md px-4 py-3 text-maroon-dark outline-none"
+                style={{ fontFamily: "var(--font-dm-sans)", fontSize: "1rem", backgroundColor: "#dde0e3" }}
               />
             </div>
 
             {/* Role radio */}
             <div>
-              <p className="text-maroon-dark mb-4" style={{ fontSize: "1rem" }}>
+              <p className="text-maroon-dark mb-4" style={{ fontFamily: "var(--font-dm-sans)", fontSize: "1rem" }}>
                 I am a…
               </p>
               <div className="flex justify-between">
@@ -98,7 +98,7 @@ export default function Contact() {
                     {/* Fixed height so all circles align regardless of label length */}
                     <span
                         className="text-maroon-dark/70 text-center leading-snug flex items-end justify-center"
-                        style={{ fontSize: "0.9rem", height: "2.5rem" }}
+                        style={{ fontFamily: "var(--font-dm-sans)", fontSize: "0.9rem", height: "2.5rem" }}
                     >
                         {label}
                     </span>
@@ -117,7 +117,7 @@ export default function Contact() {
 
             {/* Message */}
             <div>
-              <label className="block text-maroon-dark mb-1" style={{ fontSize: "1rem" }}>
+              <label className="block text-maroon-dark mb-1" style={{ fontFamily: "var(--font-dm-sans)", fontSize: "1rem" }}>
                 Message
               </label>
               <textarea
@@ -126,14 +126,14 @@ export default function Contact() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="w-full rounded-md px-4 py-3 text-maroon-dark/50 outline-none resize-none"
-                style={{ fontSize: "1rem", backgroundColor: "#dde0e3" }}
+                style={{ fontFamily: "var(--font-dm-sans)", fontSize: "1rem", backgroundColor: "#dde0e3" }}
               />
             </div>
 
             {/* Submit */}
             <button
               onClick={handleSend}
-              className="mt-2 w-full rounded-md bg-maroon-dark text-cream py-3 font-semibold tracking-wide transition-opacity hover:opacity-90"
+              className="mt-2 w-full hover:cursor-pointer hover:text-white rounded-md bg-maroon-dark text-cream py-3 font-semibold tracking-wide transition-opacity hover:opacity-90"
               style={{ fontSize: "1rem" }}
             >
               Send Message
@@ -180,7 +180,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-maroon-dark font-bold" style={{ fontSize: "1.083rem" }}>Email</p>
-                  <a href="mailto:MAP.researchshop@mcgill.ca" className="text-maroon-dark" style={{ fontSize: "1.083rem" }}>
+                  <a href="mailto:MAP.researchshop@mcgill.ca" className="text-[#ab1f42]" style={{ fontSize: "1.083rem" }}>
                     MAP.researchshop@mcgill.ca
                   </a>
                 </div>
@@ -196,7 +196,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-maroon-dark font-bold" style={{ fontSize: "1.083rem" }}>Location</p>
-                  <p className="text-maroon-dark leading-snug" style={{ fontSize: "1.083rem" }}>
+                  <p className="text-[#ab1f42] leading-snug" style={{ fontSize: "1.083rem" }}>
                     McGill University<br />
                     Department of Psychology<br />
                     2001 McGill College Avenue<br />
@@ -216,7 +216,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-maroon-dark font-bold" style={{ fontSize: "1.083rem" }}>Lab Website</p>
-                  <a href="https://www.bartzlab.com" target="_blank" rel="noopener noreferrer" className="text-maroon-dark" style={{ fontSize: "1.083rem" }}>
+                  <a href="https://www.bartzlab.com" target="_blank" rel="noopener noreferrer" className="text-[#ab1f42]" style={{ fontSize: "1.083rem" }}>
                     www.bartzlab.com
                   </a>
                 </div>

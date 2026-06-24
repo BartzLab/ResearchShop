@@ -44,7 +44,7 @@ export default function Hero() {
                 className="
                   inline-block px-10 py-2 rounded-full
                   bg-[#660f1a] text-white
-                  text-lg font-semibold tracking-widest
+                  text-lg font-light tracking-widest
                   hover:bg-[#9b2929] transition-colors duration-200
                 "
                 style={{ fontFamily: "var(--font-dm-sans)" }}
