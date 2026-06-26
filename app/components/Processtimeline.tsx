@@ -28,21 +28,12 @@ const processSteps = [
       color: "#c98a93",
     },
   ];
-  
+
   // Geometry constants.
   const CIRCLE_DIAMETER = 160;
-  // PILL_MIN_HEIGHT must be >= the tallest pill's natural content height,
-  // and STEP_HEIGHT must be >= PILL_MIN_HEIGHT, or pills will visually
-  // overlap each other regardless of what the swirl geometry says.
   const PILL_MIN_HEIGHT = 200;
   const STEP_HEIGHT = 220;
   const ARC_RADIUS = STEP_HEIGHT / 2;
-  // SWIRL_LEFT_PADDING guarantees real breathing room between the arc's
-  // leftmost point and the SVG's left edge, instead of CENTER_X sitting
-  // exactly ARC_RADIUS away from x=0 (zero margin, which clips under any
-  // stroke width or rounding). This is the actual bug from last time:
-  // SWIRL_WIDTH was hardcoded at 220 without being rechecked after
-  // ARC_RADIUS grew from 96 to 110, leaving no margin at all.
   const SWIRL_LEFT_PADDING = 24;
   const CENTER_X = ARC_RADIUS + SWIRL_LEFT_PADDING;
   const CONNECTOR_LENGTH = 110;
@@ -51,7 +42,7 @@ const processSteps = [
   const PILL_GAP = 32;
   const RING_RADIUS = 5;
   const TRIM_ANGLE = RING_RADIUS / ARC_RADIUS;
-  
+
   function buildArcSegment(yStart: number, yEnd: number, sweep: 0 | 1) {
     const cy = (yStart + yEnd) / 2;
     const r = ARC_RADIUS;
@@ -65,33 +56,51 @@ const processSteps = [
     const y2 = cy + r * Math.sin(endAngle);
     return `M ${x1} ${y1} A ${r} ${r} 0 0 ${sweep} ${x2} ${y2}`;
   }
-  
+
   export default function ProcessTimeline() {
     const svgHeight = 8 + ARC_RADIUS * 2 * processSteps.length + 8;
-  
+
     const arcSegments = processSteps.map((_, i) => {
       const yStart = 8 + ARC_RADIUS * 2 * i;
       const yEnd = 8 + ARC_RADIUS * 2 * (i + 1);
       const sweep: 0 | 1 = i % 2 === 0 ? 0 : 1;
       return buildArcSegment(yStart, yEnd, sweep);
     });
-  
+
     return (
-      <div className="w-full bg-cream px-8 py-24">
+      <div className="w-full bg-cream px-4 py-12 sm:px-8 sm:py-20 md:py-24">
         <h2
-          className="text-maroon-dark mb-16 max-w-4xl mx-auto text-center"
-          style={{
-            fontFamily: "'Georgia', 'Times New Roman', serif",
-            fontSize: "5.33rem",
-          }}
+          className="text-maroon-dark mb-10 sm:mb-16 max-w-4xl mx-auto text-center text-2xl sm:text-4xl md:text-5xl lg:text-[5.33rem]"
+          style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
         >
           Our process at a glance
         </h2>
-  
-        <div className="max-w-4xl mx-auto flex justify-center">
+
+        {/* Mobile layout — vertical numbered list (hidden on lg+) */}
+        <div className="flex flex-col gap-4 lg:hidden max-w-xl mx-auto">
+          {processSteps.map((step) => (
+            <div key={step.number} className="flex gap-4 items-start">
+              <div
+                className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: step.color }}
+              >
+                <span className="text-white font-bold text-lg">{step.number}</span>
+              </div>
+              <div className="bg-white rounded-2xl px-5 py-4 flex-1">
+                <p className="font-bold text-lg mb-1 text-[#ab1f42]">{step.title}</p>
+                <p className="text-gray-700 text-sm leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop layout — swirl (hidden below lg) */}
+        <div className="hidden lg:flex max-w-4xl mx-auto justify-center">
           <div className="flex" style={{ gap: PILL_GAP }}>
             <div
-              className="relative flex-shrink-0"
+              className="relative shrink-0"
               style={{ width: TOTAL_SVG_WIDTH, height: svgHeight }}
             >
               <svg
@@ -100,13 +109,6 @@ const processSteps = [
                 aria-hidden="true"
               >
                 <defs>
-                  {/* gradientUnits="userSpaceOnUse" + explicit y1/y2 in real
-                      pixel coordinates spanning the WHOLE swirl height. This
-                      is the fix for the fade resetting per segment: without
-                      this, each <path> defaults to its own local 0%-100%
-                      bounding box, so every segment restarted the fade
-                      independently instead of continuing one smooth fade
-                      across all four steps. */}
                   <linearGradient
                     id="swirlGradient"
                     gradientUnits="userSpaceOnUse"
@@ -123,9 +125,8 @@ const processSteps = [
                       />
                     ))}
                   </linearGradient>
-  
                 </defs>
-  
+
                 {arcSegments.map((d, i) => (
                   <path
                     key={`arc-${i}`}
@@ -135,7 +136,7 @@ const processSteps = [
                     strokeWidth="4"
                   />
                 ))}
-  
+
                 <circle
                   cx={CENTER_X}
                   cy="8"
@@ -155,10 +156,7 @@ const processSteps = [
                     strokeWidth="3.5"
                   />
                 ))}
-  
-                {/* Connector lines, ending in a plain solid dot (not an
-                    arrowhead) — a straight line from the circle's edge to
-                    a small filled circle next to the text pill. */}
+
                 {processSteps.map((step, i) => {
                   const centerY = 8 + ARC_RADIUS * 2 * i + ARC_RADIUS;
                   const lineEndX = CIRCLE_RIGHT_EDGE + CONNECTOR_LENGTH;
@@ -177,7 +175,7 @@ const processSteps = [
                   );
                 })}
               </svg>
-  
+
               {processSteps.map((step, i) => {
                 const centerY = 8 + ARC_RADIUS * 2 * i + ARC_RADIUS;
                 return (
@@ -199,11 +197,7 @@ const processSteps = [
                 );
               })}
             </div>
-  
-            {/* Pills now have an explicit min-height matching PILL_MIN_HEIGHT,
-                so every pill occupies the same vertical space regardless of
-                how much text it holds — fixing the uneven spacing where
-                longer-content pills crept into neighboring steps' space. */}
+
             <div className="relative px-8 py-4" style={{ width: 440, height: svgHeight }}>
               {processSteps.map((step, i) => {
                 const centerY = 8 + ARC_RADIUS * 2 * i + ARC_RADIUS;

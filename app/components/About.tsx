@@ -5,7 +5,7 @@ import ProcessTimeline from "./Processtimeline";
 export default function About() {
   return (
     <section id="about" className="relative w-full bg-white">
-      <div className="w-full relative overflow-hidden" style={{ height: "700px" }}>
+      <div className="w-full relative overflow-hidden lg:h-175">
         {/* Full-width photo behind everything */}
         <Image
           src="/images/people.jpeg"
@@ -15,16 +15,16 @@ export default function About() {
           className="object-cover object-center"
         />
 
-        {/* Cream card — top-left aligned, ~72% wide, not full height */}
-        <div className="absolute top-12 left-12 w-[58%] bg-cream px-12 pt-10 pb-16">
+        {/* Cream card
+            - Below lg: relative (normal flow), so the container height
+              expands to fit the card. The fill image stretches with it.
+            - lg+: absolute overlay, container has fixed h-175. */}
+        <div className="relative z-10 m-4 sm:m-8 lg:absolute lg:m-0 lg:top-12 lg:left-12 lg:w-[58%] bg-cream px-5 pt-6 pb-8 sm:px-10 sm:pt-10 sm:pb-12 lg:px-12 lg:pt-10 lg:pb-16">
           {/* "Our mission." + horizontal rule */}
-          <div className="flex items-center gap-4 mb-8">
+          <div className="flex items-center gap-4 mb-4 sm:mb-6 lg:mb-8">
             <p
-              className="text-maroon-dark whitespace-nowrap"
-              style={{
-                fontFamily: "'Georgia', 'Times New Roman', serif",
-                fontSize: "1.833rem",
-              }}
+              className="text-maroon-dark whitespace-nowrap text-base sm:text-xl lg:text-[1.833rem]"
+              style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
             >
               Our mission.
             </p>
@@ -33,21 +33,18 @@ export default function About() {
 
           {/* Big heading */}
           <h2
-            className="text-maroon-dark leading-[1.05] mb-8"
-            style={{
-              fontFamily: "'Georgia', 'Times New Roman', serif",
-              fontSize: "4.583rem",
-            }}
+            className="text-maroon-dark leading-[1.05] mb-4 sm:mb-6 lg:mb-8 text-2xl sm:text-[2.5rem] md:text-[3rem] lg:text-[4.583rem]"
+            style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
           >
             Bridging research
             <br />
             &amp; community
           </h2>
 
-          {/* Body copy — ~1.17rem matches Canva's ~14px body */}
+          {/* Body copy */}
           <p
-            className="text-maroon-dark leading-relaxed"
-            style={{ fontSize: "1.17rem", fontFamily: "var(--font-dm-sans)" }}
+            className="text-maroon-dark leading-relaxed text-xs sm:text-sm lg:text-[1.17rem]"
+            style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             We aim to{" "}
             <strong>
