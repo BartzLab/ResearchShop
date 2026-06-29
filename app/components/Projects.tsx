@@ -91,9 +91,9 @@ export default function Projects() {
       <div className="relative z-10 px-4 py-12 sm:px-8 sm:py-20">
         {/* Divider */}
         <div className="flex items-center gap-4 sm:gap-6 w-full mb-10 sm:mb-20">
-          <span className="flex-1 h-px bg-cream/20" />
-          <span className="text-cream/40 text-lg">✦</span>
-          <span className="flex-1 h-px bg-cream/20" />
+          <span className="flex-1 h-px bg-cream/30" />
+          <span className="text-cream/50 text-xl sm:text-2xl">✦</span>
+          <span className="flex-1 h-px bg-cream/30" />
         </div>
 
         {/* Two-column on lg+, stacked on mobile */}

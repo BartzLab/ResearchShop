@@ -13,7 +13,10 @@ export default function About() {
           fill
           sizes="100vw"
           className="object-cover object-center"
+          style={{ transform: "scaleX(-1)" }}
         />
+        {/* Colour overlay */}
+        <div className="absolute inset-0 z-[1]" style={{ backgroundColor: "#c4c4b3", opacity: 0.5 }} />
 
         {/* Cream card
             - Below lg: relative (normal flow), so the container height
