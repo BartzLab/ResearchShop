@@ -262,7 +262,7 @@ export default function Team() {
         <Image src="/images/blobs/bottom-right-blob.png" alt="" fill sizes="900px" style={{ objectFit: "contain" }} />
       </div>
 
-      {/* Team content — zoom 0.8 applied here only */}
+      {/* Team content */}
       <div style={{ zoom: 0.8 }}>
         <div className="relative z-10 px-4 pt-12 pb-32 sm:px-8 sm:pt-20 sm:pb-48">
           <h2

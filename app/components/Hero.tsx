@@ -9,7 +9,7 @@ const dmSans = DM_Sans({
 
 const navLinks = [
   { label: "ABOUT", href: "#about" },
-  { label: "PROJECTS", href: "#projects" },
+  //{ label: "PROJECTS", href: "#projects" },
   { label: "CONTACT", href: "#contact" },
 ];
 
