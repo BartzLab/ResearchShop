@@ -3,12 +3,14 @@
 import { useState } from "react";
 
 type Role = "student" | "organization" | "other" | null;
+type Status = "idle" | "sending" | "success" | "error";
 
 export default function Contact() {
   const [selectedRole, setSelectedRole] = useState<Role>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
 
   const roles: { value: Role; label: string }[] = [
     { value: "student", label: "Student" },
@@ -18,16 +20,26 @@ export default function Contact() {
 
   const roleLabel = roles.find((r) => r.value === selectedRole)?.label ?? "Not specified";
 
-  function handleSend() {
-    const to = "MAP.researchshop@mcgill.ca";
-    const subject = encodeURIComponent("Research Shop Inquiry");
-    const body = encodeURIComponent(
-      `Name: ${name || "Not provided"}\n` +
-      `Email: ${email || "Not provided"}\n` +
-      `I am a: ${roleLabel}\n\n` +
-      `Message:\n${message || "Not provided"}`
-    );
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  async function handleSend() {
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, role: roleLabel, message }),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
+        setSelectedRole(null);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -128,10 +140,21 @@ export default function Contact() {
             {/* Submit */}
             <button
               onClick={handleSend}
-              className="mt-2 w-full hover:cursor-pointer hover:text-white rounded-md bg-maroon-dark text-cream py-3 font-semibold tracking-wide transition-opacity hover:opacity-90 text-sm sm:text-base"
+              disabled={status === "sending"}
+              className="mt-2 w-full hover:cursor-pointer hover:text-white rounded-md bg-maroon-dark text-cream py-3 font-semibold tracking-wide transition-opacity hover:opacity-90 text-sm sm:text-base disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send Message
+              {status === "sending" ? "Sending…" : "Send Message"}
             </button>
+            {status === "success" && (
+              <p className="text-center text-sm text-green-700" style={{ fontFamily: "var(--font-dm-sans)" }}>
+                Message sent! We&apos;ll be in touch soon.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-center text-sm text-red-600" style={{ fontFamily: "var(--font-dm-sans)" }}>
+                Something went wrong. Please try emailing us directly at MAP.researchshop@mcgill.ca.
+              </p>
+            )}
           </div>
         </div>
 
